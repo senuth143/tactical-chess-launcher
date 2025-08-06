@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tactical_Chess Tournament Launcher</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen p-6 text-center">
+
+  <h1 class="text-3xl font-bold mb-6">♟️ Tactical_Chess Tournament Launcher</h1>
+
+  <input
+    type="text"
+    id="lichessLink"
+    placeholder="Paste Lichess tournament link here"
+    class="w-full max-w-xl mx-auto p-3 rounded bg-gray-800 text-white border border-gray-600"
+  />
+
+  <button
+    onclick="openLink()"
+    class="mt-4 px-6 py-2 bg-green-600 hover:bg-green-700 text-white rounded">
+    Open Tournament
+  </button>
+
+  <script>
+    function openLink() {
+      const link = document.getElementById("lichessLink").value;
+      const isValid = /^(https?:\/\/)?lichess\.org\/(swiss|tournament)\/[\w\d]+$/.test(link);
+      if (isValid) {
+        const formatted = link.startsWith("http") ? link : "https://" + link;
+        window.open(formatted, "_blank");
+      } else {
+        alert("Please enter a valid Lichess tournament link.");
+      }
+    }
+  </script>
+
+</body>
+</html>
